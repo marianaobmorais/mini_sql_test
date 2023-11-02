@@ -2,7 +2,7 @@
 
 I decided to share the SQL code through GitHub as it allows a better readability.
 
-Before importing the datasets into PgAdmin4 (PostgreSQL), I did some cleaning of data on Excel:
+Before importing the datasets into PgAdmin4 (PostgreSQL), I did some cleaning of the data on Excel:
 - Changed the date format from dd/mm/yyyy to **yyyy-mm-dd** as it is accepted by PostgreSQL;
 - and replaced the commas (,) to period points (.) in the NUMERIC values.
   
