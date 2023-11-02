@@ -7,4 +7,4 @@ Before importing the datasets into PgAdmin4 (PostgreSQL), I did some cleaning of
 - and replaced the commas (,) to period points (.) in the NUMERIC values.
   
 Next, I proceeded to create the database on PgAdmin4 and its datasets where I determined the data types, so it would be imported correctly.
-After these steps, I proceed to analyse the datasets as it follows: [click here]()
+After these steps, I proceed to analyse the datasets as it follows [here](https://github.com/marianaobmorais/test_ueni/blob/main/mini_sql_test_ueni.sql).
