@@ -144,8 +144,7 @@ WHERE
 -- they have in each month, starting with the month they started their subscription.
 		
 SELECT
-	sd.subscription_start
-	,ad.month							-- I don't know how to add the remaining months to the table
+	ad.month							
 	,ad.bookings AS monthly_count
 	,SUM(ad.bookings) 
 		OVER (PARTITION BY bd.customer_id ORDER BY ad.month) AS culmulative_bookings
@@ -171,7 +170,8 @@ JOIN
 	bd.business_id = ad.business_id
 WHERE
 	sd.customer_id = 'abatS';
-	
+
+-- I don't know how to add the remaining months to the table
 
 
 -- Task #8: For each business, count the number of days in which they have messages, 
