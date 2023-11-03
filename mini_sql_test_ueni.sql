@@ -142,36 +142,73 @@ WHERE
 
 -- Task #7: For customer_id “abatS”, write a query to get the cumulative number of bookings 
 -- they have in each month, starting with the month they started their subscription.
-		
+
+-- First, I need to create a table with the missing months that will be later FULL (OUTER) JOINed:
+
+CREATE TABLE missing_months (month) AS 
+	SELECT GENERATE_SERIES
+	       (
+	           (DATE '2022-11-01'),
+	           (DATE '2023-11-01'),
+	           interval '1 MONTH'
+	       )::DATE;
+
+-- Second, add the columns for customer_id, bookins and business_id so I can perform the FULL JOIN
+
+ALTER TABLE missing_months
+	ADD customer_id VARCHAR;
+
+ALTER TABLE missing_months
+	ADD bookings INTEGER;
+
+ALTER TABLE missing_months
+	ADD business_id VARCHAR;
+	
+-- Third, add the missing values for customer_id and business_id
+
+UPDATE missing_months
+SET customer_id = 'abatS'
+WHERE customer_id IS NULL;
+
+UPDATE missing_months
+SET business_id = '0p6R8'
+WHERE business_id IS NULL;
+
+-- View the new dataset
+
 SELECT
-	ad.month							
-	,ad.bookings AS monthly_count
-	,SUM(ad.bookings) 
-		OVER (PARTITION BY bd.customer_id ORDER BY ad.month) AS culmulative_bookings
+	*
 FROM
-	subscription_data AS sd
-JOIN
-	business_data AS bd
-	ON
-	sd.customer_id = bd.customer_id
-JOIN
+	missing_months;
+	
+
+-- Then, back to the task:
+
+SELECT
+	DISTINCT all_months AS months
+	,SUM(ad.bookings)
+		OVER (PARTITION BY business_id ORDER BY all_months) AS culmulative_bookings
+FROM
 	(
 	SELECT
-		business_id
-		,DATE_TRUNC('month', date) AS month
-		,COALESCE(SUM(bookings), 0) AS bookings
+		DATE_TRUNC('month', mm.month) AS all_months
+		--,DATE_TRUNC('month',ad.date) AS some_months
+		,COALESCE(ad.bookings, 0) AS bookings
+		,mm.business_id
 	FROM
-		activity_data
-	GROUP BY
-		business_id
-		,month
+		missing_months AS mm
+	FULL OUTER JOIN
+		activity_data AS ad
+		ON
+		(DATE_TRUNC('month', mm.month) = DATE_TRUNC('month',ad.date) AND ad.business_id = '0p6R8')
+	WHERE
+		mm.month IS NOT NULL
+	ORDER BY
+		DATE_TRUNC('month', mm.month)
 	) AS ad
-	ON
-	bd.business_id = ad.business_id
-WHERE
-	sd.customer_id = 'abatS';
+ORDER BY
+	all_months
 
--- I don't know how to add the remaining months to the table
 
 
 -- Task #8: For each business, count the number of days in which they have messages, 
