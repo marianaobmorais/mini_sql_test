@@ -6,7 +6,7 @@ Firstly, I would like to thank you for considering me for the Junior Data Analys
 
 ## Here's what I did...
 
-I decided to share the SQL code through a **private repository** on GitHub as it allows a better readability.
+I decided to share the SQL code through a **private repository** on GitHub as it allows for a better readability.
 
 However, before importing the datasets into PgAdmin4 (PostgreSQL), I did some cleaning of the data on Excel:
 - Changed the date format from dd/mm/yyyy to **yyyy-mm-dd** as it is accepted by PostgreSQL;
