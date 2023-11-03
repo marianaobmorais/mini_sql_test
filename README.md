@@ -1,4 +1,4 @@
-# Mini SQL test for UENI
+# Mini SQL test
 
 Hello! 👋 
 
