@@ -2,7 +2,7 @@
 
 Hello! 👋 
 
-Firstly, I would like to thank you for considering me for the Junior Data Analyst position at UENI.
+This is a mini test I did for a Junior Data Analyst position I applied. Since it covers important SQL notions such as Joins, Windows Functions, Aggregate Functions, Converting Data Types, COALESCE, I decided to include it on my portfolio.
 
 ## Here's what I did...
 
