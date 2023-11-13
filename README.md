@@ -6,9 +6,7 @@ This is a mini test I did for a Junior Data Analyst position I applied. Since it
 
 ## Here's what I did...
 
-I decided to share the SQL code through a **repository** on GitHub as it allows for a better readability.
-
-However, before importing the datasets into PgAdmin4 (PostgreSQL), I did some cleaning of the data on Excel:
+Before importing the datasets into PgAdmin4 (PostgreSQL), I did some cleaning of the data on Excel:
 - Changed the date format from dd/mm/yyyy to **yyyy-mm-dd** as it is accepted by PostgreSQL;
 - and replaced the commas (,) to **period points (.)** in the **NUMERIC** values.
   
