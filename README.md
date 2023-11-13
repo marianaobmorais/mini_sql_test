@@ -4,9 +4,12 @@ Hello! 👋
 
 This is a mini test I did for a Junior Data Analyst position I applied. Since it covers important SQL notions such as Joins, Windows Functions, Aggregate Functions, Converting Data Types, COALESCE, I decided to include it on my portfolio.
 
-## Data
+## The data
 
-There are three datasets containing data about a made-up consult company's clients, their business IDs, their sales, subscription date, renewal and cancellation, business categories and so on.  
+There are three datasets containing data about a made-up consult company's clients, their business IDs, their sales, subscription date, renewal and cancellation, business categories and so on:
+- subscription_data.csv
+- business_data.csv
+- activity_data.csv
 
 ## Here's what I did...
 
