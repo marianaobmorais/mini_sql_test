@@ -4,6 +4,10 @@ Hello! 👋
 
 This is a mini test I did for a Junior Data Analyst position I applied. Since it covers important SQL notions such as Joins, Windows Functions, Aggregate Functions, Converting Data Types, COALESCE, I decided to include it on my portfolio.
 
+## Data
+
+There are three datasets containing data about a made-up consult company's clients, their business IDs, their sales, subscription date, renewal and cancellation, business categories and so on.  
+
 ## Here's what I did...
 
 Before importing the datasets into PgAdmin4 (PostgreSQL), I did some cleaning of the data on Excel:
