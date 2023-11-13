@@ -72,16 +72,25 @@ WHERE
 SELECT
 	DISTINCT bd.customer_id AS list_customers
 FROM
-	activity_data AS ad
+	(
+	SELECT
+		business_id
+		,date
+		,SUM(messages) AS sum_messages
+	FROM
+		activity_data
+	WHERE
+		date >= '2023-01-01'
+	GROUP BY
+		business_id
+		,date
+	) AS ad
 JOIN
 	business_data AS bd
 	ON
 	ad.business_id = bd.business_id
 WHERE
-	ad.messages > 5
-	AND
-	ad.date >= '2023-01-01';
-
+	ad.sum_messages > 5
 
 
 
@@ -268,7 +277,7 @@ GROUP BY
 
 SELECT
 	bd.business_category
-	,COUNT(ad.business_id) AS business_count
+	,COUNT(DISTINCT ad.business_id) AS business_count
 FROM
 	activity_data AS ad
 JOIN
